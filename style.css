@@ -196,6 +196,10 @@ main {
     margin: auto;
 }
 
+.brands__item {
+    width: -webkit-fill-available;
+}
+
 .brands__item-link {
     display: block;
     padding: 0 0.5rem;
@@ -348,9 +352,8 @@ main {
     padding: 1.625rem 0;
 }
 
-.call-to-action__button,
-.form__submit-button {
-    padding: 1.25rem 2.25rem;
+.call-to-action__button, .form__submit-button {
+    padding: 1rem;
 }
 
 .parts {
@@ -908,21 +911,28 @@ ul.footer-nav__header-menu {
     }
 
     .card__item,
-    .bg--black {
-        background-color: #2f125f;
+    .bg--black,
+    .team__member,
+    .contact-us {
+        /* background-color: #2f125f; */
+        background-color: #2a2a2a;
     }
 
     .button {
-        background-color: dimgray;
+        background-color: #FF5252;
     }
 
-    .contact-us,
     .call-to-action,
     .services__item.bg--white {
-        background-color: #77bf84;
+        /* background-color: #77bf84; */
+        background-color: #009688 ;
     }
 
     body {
-        background-color: #191A23;
+        background-color: #000000;
+    }
+
+    .contact-us__photo-container svg rect {
+        fill: white;
     }
 }
