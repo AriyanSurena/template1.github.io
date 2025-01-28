@@ -45,7 +45,7 @@
                         </a>
                     </li>
                     <li class="navbar__item">
-                        <button class="navbar__button button">
+                        <button class="navbar__button button" id="requestAQuote">
                             Request a quote
                         </button>
                     </li>
@@ -63,7 +63,7 @@
                         Our digital marketing agency helps businesses grow and succeed online through a range of
                         services including SEO, PPC, social media marketing, and content creation.
                     </p>
-                    <button class="button hero__button">
+                    <button class="button hero__button" id="heroButton">
                         Book a consultation
                     </button>
                 </div>
@@ -808,7 +808,7 @@
         </section>
 
         <section class="team__container">
-            <section class="team">
+            <section class="team" id="team">
                 <article class="team__member">
                     <div class="team__member-container">
                         <div class="team__member-header">
@@ -1031,7 +1031,7 @@
         </section>
 
         <section class="contact-us">
-            <form action="" class="contact-us__form">
+            <form class="contact-us__form" id="contactUsForm">
                 <div class="form__radio-buttons">
                     <label for="sayHi">
                         <input type="radio" name="selection" id="sayHi">
@@ -1061,7 +1061,7 @@
                     </label>
                 </div>
 
-                <input type="submit" value="Send Message" class="button form__submit-button">
+                <input type="submit" value="Send Message" class="button form__submit-button" id="formSubmit">
             </form>
             <div class="contact-us__photo-container">
                 <!-- <img src="./media/image7.png" alt="" class="contact-us__photo"> -->
@@ -1194,7 +1194,22 @@
         </div>
     </footer>
 
+    <article class="alert" id="alertBox">
+        <div class="alert__container">
+            <div class="alert__closer" id="alertBoxCloser">
+                <svg xmlns="http://www.w3.org/2000/svg" height="40px" viewBox="0 -960 960 960" width="40px" fill="#EA3323"><path d="m251.33-204.67-46.66-46.66L433.33-480 204.67-708.67l46.66-46.66L480-526.67l228.67-228.66 46.66 46.66L526.67-480l228.66 228.67-46.66 46.66L480-433.33 251.33-204.67Z"/></svg>
+            </div>
+            <div class="alert__message" id="alertMessage">
+                callToActionBtn not Found
+            </div>
+        </div>
+    </article>
+    <!-- <article class="window">
+
+    </article> -->
+
     <script src="./logoChanger.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>

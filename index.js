@@ -1,0 +1,195 @@
+"use strict";
+const alertBox = document.getElementById("alertBox");
+const alertMessage = document.getElementById("alertMessage");
+const alertBoxCloser = document.getElementById("alertBoxCloser");
+const services = Array.from(document.getElementsByClassName("services__item"));
+const team = document.getElementById("team");
+const reqBtn = document.getElementById("requestAQuote");
+const heroBtn = document.getElementById("heroButton");
+const callToActionBtn1 = document.getElementsByClassName("call-to-action__button")[0];
+const callToActionBtn2 = document.getElementsByClassName("call-to-action__button")[1];
+const form = document.getElementById("contactUsForm");
+function alertShow(value) {
+    alertBox.style.display = "flex";
+    alertMessage.innerHTML = `${value}`;
+    document.body.classList.add("no__scroll");
+    alertBox.onclick = (event) => {
+        alertBox.style.display = "none";
+        document.body.classList.remove("no__scroll");
+    };
+    Array.from(alertBox.children).forEach((element) => {
+        element.onclick = (event) => {
+            event.stopPropagation();
+        };
+    });
+    alertBoxCloser.addEventListener("click", () => {
+        alertBox.style.display = "none";
+        document.body.classList.remove("no__scroll");
+    });
+}
+services.forEach((element) => {
+    element.addEventListener("click", () => {
+        const info = {
+            img: element.querySelector("svg"),
+            title: element.querySelector("h4"),
+            link: element.querySelector("a"),
+        };
+        alertShow(`  
+            <div class="serviceItem--card">
+            ${info.img.outerHTML}
+            <h4>${info.title.textContent}</h4>
+            <a href="${info.link.href}">Learn More</a>
+            </div>
+        `);
+    });
+});
+const teamMember = `
+                    <div class="team__member-container">
+                        <div class="team__member-header">
+                            <img src="./media/image6.png" alt="" class="team__member-photo">
+                        </div>
+                        <div class="team__member-info">
+                            <span class="team__member-name">Sarah Kim</span>
+                            <span class="team__member-job">Content Creator</span>
+                        </div>
+                        <div class="team__member-linkdin">
+                            <a href="#">
+                                <svg width="34" height="34" viewBox="0 0 34 34" fill="none"
+                                    xmlns="http://www.w3.org/2000/svg">
+                                    <circle cx="17" cy="17" r="17" fill="black" />
+                                    <path d="M9.31776 25H12.8131V13.6844H9.31776V25Z" fill="#B9FF66" />
+                                    <path
+                                        d="M9 10.0719C9 11.1875 9.90031 12.0906 11.0654 12.0906C12.1776 12.0906 13.0779 11.1875 13.0779 10.0719C13.0779 8.95625 12.1776 8 11.0654 8C9.90031 8 9 8.95625 9 10.0719Z"
+                                        fill="#B9FF66" />
+                                    <path
+                                        d="M22.4517 25H26V18.7844C26 15.7562 25.3115 13.3656 21.7632 13.3656C20.0685 13.3656 18.9034 14.3219 18.4268 15.225H18.3738V13.6844H15.0374V25H18.5327V19.4219C18.5327 17.9344 18.7975 16.5 20.6511 16.5C22.4517 16.5 22.4517 18.2 22.4517 19.475V25Z"
+                                        fill="#B9FF66" />
+                                </svg>
+                            </a>
+                        </div>
+                    </div>
+                    <div class="team__member-bio">
+                        <p>
+                            2+ years of experience in writing and editing<br>
+                            Skilled in creating compelling, SEO-optimized content for various industries
+                        </p>
+                    </div>
+                    `;
+// With type Assertion there is no need to make a condition, but I did it to make it more secure.
+if (reqBtn) {
+    reqBtn.addEventListener("click", (event) => {
+        alertShow("Your Request Sent.");
+    });
+}
+else {
+    console.error("Request Button not Found.");
+}
+// With type Assertion there is no need to make a condition, but I did it to make it more secure.
+if (heroBtn) {
+    heroBtn.addEventListener("click", (event) => {
+        // alert("You are Booking a Consulation.")
+        alertShow("You are Booking a Consulation.");
+    });
+}
+else {
+    console.error("Hero Button not Found.");
+}
+// With type Assertion there is no need to make a condition, but I did it to make it more secure.
+if (callToActionBtn1) {
+    callToActionBtn1.addEventListener("click", (event) => {
+        // alert("Your Free Propal is Ready")
+        alertShow("Your Free Propal is Ready");
+    });
+}
+else {
+    console.error("callToActionBtn not Found.");
+}
+function registerCardClickEvents() {
+    const teamMembers = Array.from(document.getElementsByClassName("team__member"));
+    teamMembers.forEach((element) => {
+        const info = document.getElementsByClassName("team__member-info")[0];
+        const member = {
+            img: element.querySelector("img"),
+            memberName: info.querySelector("span.team__member-name"),
+            memberJob: info.querySelector("span.team__member-job"),
+            memberBio: element.querySelector("div.team__member-bio p"),
+        };
+        element.addEventListener("click", () => {
+            alertShow(`
+              <div>
+                  <div style="text-align: center;">
+                      <img src="${member.img.src}">
+                  </div>
+                  <p style="font-size: 1.5rem; padding: 1rem 0">${member.memberName.outerHTML}<p>
+                  <p style="font-size: 0.85rem; color: darkgray;">${member.memberJob.outerHTML}<p>
+                  <p style="font-size: 0.95rem; padding: 1rem 0; line-height: 1.5; word-spacing: 2px;">${member.memberBio.outerHTML}<p>  
+              </div>
+          `);
+        });
+        const links = Array.from(element.querySelectorAll(".team__member-linkdin a"));
+        links.map((link) => {
+            link.addEventListener("click", (event) => {
+                event.stopPropagation();
+            });
+        });
+    });
+}
+registerCardClickEvents();
+// With type Assertion there is no need to make a condition, but I did it to make it more secure.
+if (callToActionBtn2) {
+    callToActionBtn2.addEventListener("click", (event) => {
+        // یک عنصر موقت ایجاد کنید
+        const tempArticle = document.createElement("article");
+        // رشته HTML را به innerHTML آن اضافه کنید
+        tempArticle.innerHTML = teamMember;
+        // اولین عنصر فرزند(مورد نظر) را بدست آورید
+        const newTeamMember = tempArticle;
+        // عنصر واقعی را اضافه کنید
+        team.insertAdjacentElement("beforeend", newTeamMember);
+        newTeamMember.classList.add("team__member");
+        registerCardClickEvents();
+    });
+}
+else {
+    console.log("callToActionBtn not Found.");
+}
+form.addEventListener("submit", (event) => {
+    event.preventDefault();
+    const Message = {
+        name: form.querySelector("input#userName"),
+        email: form.querySelector("input#userEmail"),
+        msg: form.querySelector("textarea#userMessage"),
+        sayHi: form.querySelector("input#sayHi"),
+        getACode: form.querySelector("input#getACode"),
+    };
+    alertShow(`
+            <div>
+                <p>${Message.name.value}</p>
+                <p>${Message.email.value}</p>
+                <p>${Message.sayHi || Message.getACode}</p>
+                <p>${Message.msg.value}</p>
+            </div>  
+        `);
+});
+const circles = Array.from(document.getElementsByClassName("card__item-action"));
+let negativeCircle = `
+                        <svg width="58" height="59" viewBox="0 0 58 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="29" cy="29.5" r="28.5" fill="#F3F3F3" stroke="#191A23" />
+                            <path d="M20 32.14V26.5H37.76V32.14H20Z" fill="black" />
+                        </svg>
+                        `;
+let positiveCircle = `
+                        <svg width="58" height="59" viewBox="0 0 58 59" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <circle cx="29" cy="29.5" r="28.5" fill="#F3F3F3" stroke="#191A23" />
+                            <path d="M25.6 41.58V31.86H16V26.22H25.6V16.5H31.48V26.22H41.08V31.86H31.48V41.58H25.6Z"
+                                fill="#191A23" />
+                        </svg>
+                        `;
+circles.forEach(element => {
+    let flag = true;
+    element.addEventListener("click", () => {
+        flag = !flag;
+        (flag) ? element.innerHTML = positiveCircle : element.innerHTML = negativeCircle;
+        // (element.children[0].innerHTML == negativeCircle)? element.innerHTML = positiveCircle: element.innerHTML = negativeCircle;
+    });
+});
